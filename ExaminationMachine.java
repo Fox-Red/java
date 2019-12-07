@@ -1,38 +1,41 @@
 package machine;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class ExaminationMachine {
-    private static String[] answer = new String[5];
+    private List<Subject> answers = new ArrayList<>();
 
-    public static void addSubject() {
-        boolean continueAdd = true;
+    {
+        answers.add(new Subject("以下选项哪个是Java基本数据类型?\n\tA.String\n\tB.Integer\n\tC.boolean\n\tD.Math","C"));
+        answers.add(new Subject("以下选项哪个不是Java基本数据类型?\n\tA.String\n\tB.int\n\tC.boolean\n\tD.double","A"));
+        answers.add(new Subject("以下选项哪个是Java引用数据类型?\n\tA.String\n\tB.int\n\tC.boolean\n\tD.char","A"));
+        answers.add(new Subject("以下选项哪个不是Java引用数据类型?\n\tA.String\n\tB.Integer\n\tC.boolean\n\tD.Math","C"));
+        answers.add(new Subject("以下选项哪个是java.util包中的类?\n\tA.String\n\tB.Integer\n\tC.Scanner\n\tD.Math","C"));
+        answers.add(new Subject("以下选项哪个不是java.util包中的类?\n\tA.Date\n\tB.Integer\n\tC.Calendar\n\tD.Random","B"));
+        answers.add(new Subject("以下选项哪个不是String类中的方法?\n\tA.compareTo\n\tB.append\n\tC.substring\n\tD.concat","B"));
+        answers.add(new Subject("以下选项哪个是String类中方法?\n\tA.append\n\tB.delete\n\tC.insert\n\tD.concat","D"));
+        answers.add(new Subject("以下选项哪个不是接口中属性的修饰符?\n\tA.public\n\tB.static\n\tC.final\n\tD.abstract","D"));
+        answers.add(new Subject("以下选项哪个不是Set集合的方法?\n\tA.set\n\tB.add\n\tC.remove\n\tD.iterator","A"));
+    }
+
+    public List<Subject> getAnswers() {
+        return this.answers;
+    }
+
+    public String[] answerSubject() {
         Scanner input = new Scanner(System.in);
-        while (continueAdd) {
-            Subject.add();
-            System.out.println("是否还要继续增加题目？请输入true或false");
-            continueAdd = input.nextBoolean();
-        }
-    };
-    public static void correction() {};
-    public static void answerSubject() {
-        Scanner input = new Scanner(System.in);
-        HashMap<String, HashMap<String, String>> subject=  Subject.getSubject();
-        Set<String> set = subject.keySet();
-        List<String> list = new ArrayList<>(set);
-        HashSet<Integer> getElementArray = new HashSet<>(5);
         Random random = new Random();
-        for (int i = 1; i <= 5;) {
-            Integer x = random.nextInt(list.size() + 1);
-            getElementArray.add(x);
-            i = getElementArray.size();
+        Set<Subject> set = new HashSet<>();
+        while (set.size() < 5) {
+            set.add(answers.get(random.nextInt(answers.size() - 1)));
         }
-        List<Integer> subList = new ArrayList<>(getElementArray);
-        for (int i = 0; i < 5; i++) {
-            System.out.println(list.get(subList.get(i)));
+        String[] answers = new String[set.size()];
+        List<Subject> subjects = new ArrayList<>(set);
+        for (int i = 0; i < subjects.size(); i++) {
+            System.out.println(i + 1 + "." + subjects.get(i));
             System.out.println("请输入答案");
-            answer[i] = input.nextLine();
+            answers[i] = input.nextLine();
         }
+        return answers;
     }
 }

@@ -1,6 +1,11 @@
 package person;
 
-public abstract class User {
+import machine.ExaminationMachine;
+import machine.Subject;
+
+import java.util.List;
+
+public  class User {
 
     private String name;
     private String id;
@@ -10,7 +15,10 @@ public abstract class User {
         this.id = id;
     }
 
+    public String getName() {
+        return this.name;
+    }
 
-    public abstract void operation();
+    public String[] operation(List<Subject> subjects){return null;}
 }
 
