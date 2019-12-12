@@ -1,8 +1,11 @@
 public class TestMain {
     public static void main(String[] args) {
-        BankSingIn bsi = new BankSingIn();
-
-        bsi.readUser("F:\\User.txt");
-        bsi.writeUesr("F:\\User.txt",bsi.ceartUser("继文", "123", 0));
+        MyLinkedList ml = new MyLinkedList();
+        ml.addAtHead(2);
+        ml.deleteAtIndex(1);
+        ml.addAtIndex(1,1);
+        System.out.println(ml.get(1));
+        ml.deleteAtIndex(1);
+        System.out.println(ml.get(1));
     }
 }
