@@ -1,0 +1,26 @@
+create table student
+(
+name varchar(20),
+mysql int,
+english double(5,2),
+java smallint
+);
+insert into student(english,mysql,java) values('99','99','100');
+select distinct english,mysql from student;
+select * from student order by english;
+ select * from student where mysql = 100 && english >= 60;
+select * from student limit 1,1;
+select name,mysql,english+java as sum from student order by sum desc;
+insert into student(english,mysql,java) values('89','97','89'),
+('89','94','89'),
+('85','85','77'),
+('82','74','63'),
+('67','42','49'),
+('18','23','66')
+;
+update student set name='czx' where english between 80 and 60;
+update student set english=english/10;
+update student set mysql=mysql/10;
+update student set mysql=mysql+20 order by mysql limit 3;
+select name,mysql from student where name in ('czx');
+update student set name='xiaow' where name <=> null;
