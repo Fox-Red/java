@@ -1,0 +1,6 @@
+http://blog.csdn.net/lonelyroamer/article/details/7949969
+interrupt();//中断线程
+interrupted();//与上面配合使用
+yield();//让线程释放手中的时间片段，回到线程池中
+利用runnable可以创建线程其为接口可以多实现，并且一个runnable可以创建多个thread对象
+这样可以实现数据的共享

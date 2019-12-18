@@ -1,11 +1,13 @@
+package demo_thread;
+
 public class TestMain {
     public static void main(String[] args) {
-        MyLinkedList ml = new MyLinkedList();
-        ml.addAtHead(2);
-        ml.deleteAtIndex(1);
-        ml.addAtIndex(1,1);
-        System.out.println(ml.get(1));
-        ml.deleteAtIndex(1);
-        System.out.println(ml.get(1));
+        MyThread t1 = new MyThread();
+        t1.setName("线程1");
+        t1.start();
+        MyThread t2 = new MyThread();
+        t2.setName("线程2");
+        t2.start();
     }
+
 }
