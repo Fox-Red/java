@@ -1,41 +1,39 @@
-import java.util.ArrayList;
-import java.util.Stack;
 
+class ListNode {
+    int val;
+    ListNode next;
+
+    public ListNode(int val) {
+        this.val = val;
+    }
+}
 public class Solution {
-    public String longestPalindrome(String s) {
-        ArrayList<String> list = new ArrayList<>();
-        Stack<Character> stark = new Stack<>();
-        for (int i = 0;i < s.length(); i++) {
-            int lead = 0;
-            if (stark.isEmpty() || (!stark.peek().equals(s.charAt(i)) && !stark.peek().equals(s.charAt(i + 1)))) {
-                stark.push(s.charAt(i));
-            } else {
-                StringBuilder sb = new StringBuilder(stark.pop());
-                while (stark.peek().equals(s.charAt(i++))) {
-                    sb.append(stark.pop());
-                    sb.append(s.charAt(i));
-                    lead++;
-                }
-                if (lead != 0) {
-                    i--;
-                    list.add(sb.toString());
-                    continue;
-                }
-                while (stark.peek().equals(s.charAt(++i + 1))){
-                    sb.append(s.charAt(i + 1));
-                    sb.append(s.charAt(i));
-                    sb.append(stark.pop());
-                }
-                i--;
-                list.add(sb.toString());
-            }
+    ListNode newHead = new ListNode(-1);
+    ListNode newTail = newHead;
+    ListNode meger(ListNode list1, ListNode list2) {
+        if (list1 == null) {
+            newTail.next = list2;
+            return newTail.next;
         }
-        String str = "";
-        for (int i = 0; i < list.size(); i++) {
-            if (str.length() < list.get(i).length()) {
-                str = list.get(i);
-            }
+        if (list2 == null) {
+            newTail.next = list1;
+            return newTail.next;
         }
-        return str;
+        if (list1.val < list2.val) {
+            newTail.next = list1;
+            newTail = list1;
+            meger(list1.next, list2);
+        } else {
+            newTail.next = list2;
+            newTail = list2;
+            meger(list1, list2.next);
+        }
+        return newHead.next;
+    }
+    public void show(ListNode head) {
+        while (head != null) {
+            System.out.println(head.val);
+            head = head.next;
+        }
     }
 }
