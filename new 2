@@ -1,0 +1,48 @@
+create table timetest
+(
+	id int,
+	datetimefield datetime,
+	timestampfield timestamp
+);
+
+create table stu_with_constraint
+(
+	id int,
+	sn int unique,
+	name varchar(20) not null
+);
+insert into stu_with_constraint (id,sn,name) values(1,201901,'james');
+create table stu_with_constraint
+(
+	id int primary key,
+	sn int unique,
+	name varchar(20) not null
+);
+insert into stu_with_constraint (id,sn,name) values(4,null,'james4');
+
+
+
+
+create table student_2
+(
+	stuid int primary key,
+	name varchar(20)
+);
+creat table crous
+(
+	cid int primary key,
+	cs int,
+	name varchar(20)
+);
+create table teacher
+(
+	tid int primary key,
+	name varchar;
+);
+create 
+
+
+
+
+
+
