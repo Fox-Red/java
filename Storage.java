@@ -17,6 +17,7 @@ public class Storage {
             //先创建student对象，再用高级流将Student对象写入文件
             oos.writeObject(Storage(name, id, sex, age));
             oos.flush();
+            Student.num++;
             System.out.println("存储成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -32,15 +33,14 @@ public class Storage {
             //读出学生信息
             Student stu = (Student) ois.readObject();
             //查找学生
-            while (stu != null) {
+            while (Student.num-- != 0) {
                 if (stu.getid() == id) {
                     return stu;
                 }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("没找到该学生信息，请重新核对");
         }
-        System.out.println("没找到该学生信息，请重新核对");
         return null;
     }
 }

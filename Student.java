@@ -2,7 +2,10 @@ import java.io.Serializable;
 
 public class Student implements Serializable {
     //学生的属性
+    //序列化
     private long serialVersionUID = -440948515215806088L;
+    //学生数目
+    static int num = 0;
     //姓名
     private String name;
     //学号
@@ -33,4 +36,5 @@ public class Student implements Serializable {
                 ", age=" + age +
                 '}';
     }
+
 }
